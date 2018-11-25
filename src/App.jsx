@@ -47,17 +47,7 @@ class App extends Component {
               </div>
               <div className="toDoList card-body">
                 <ul className="list-group">
-                  <li className="list-group-item d-flex">
-                    <div className="input-group">
-                      <div className="input-group-prepend p-2">
-                        <div className="input-group-text form-check-inline bg-primary border-0">
-                          <input type="checkbox" className="form-check-input"/>
-                        </div>
-                        <div className="">Todo item description Todo item description Todo item description</div>
-                      </div>
-                    </div>
-                    <button className="m-2 p-2 pr-5 pl-5 btn btn-warning btn-lg">Edit</button>
-                    <button className="m-2 p-2 pr-5 pl-5 btn btn-danger btn-lg">Delete</button>
+                  <li className="list-group-item container">
                   </li>
                 </ul>
               </div>
