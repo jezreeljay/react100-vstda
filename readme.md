@@ -17,4 +17,8 @@ toDoItem = {
 }
 ```
 
+### Component Hierarchy
+![Component Hierarchy](https://raw.githubusercontent.com/jezreeljay/react100-vstda/master/Wireframe/Component%20Hierarchy.png)
+
 ## Wireframe
+![Wireframe](https://github.com/jezreeljay/react100-vstda/blob/master/Wireframe/Wireframe.png?raw=true)
