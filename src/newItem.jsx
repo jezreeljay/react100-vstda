@@ -1,7 +1,7 @@
 import React from 'react';
 
 const newItem = (props) => (
-    <div className="card">
+    <div className="card create-todo-text">
     <div className="card-header"><h2>Add New Todo</h2></div>
     <div className="card-body">
     <div className="form-group">

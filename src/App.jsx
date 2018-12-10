@@ -12,12 +12,32 @@ class App extends Component {
     this.editItem = this.editItem.bind(this);
     this.test = this.test.bind(this);
     this.state = {
-      toDoList: [],
+      toDoList: [  {
+        completed: false,
+        editEnabled: false,
+        priority: 1,
+        text: 'item one',
+        id: 1 
+      },
+      {
+        completed: false,
+        editEnabled: false,
+        priority: 2,
+        text: 'item two',
+        id: 2 
+      },
+      {
+        completed: false,
+        editEnabled: false,
+        priority: 3,
+        text: 'item three',
+        id: 3 
+      }],
       itemCounter: 1,
       priority: 1,
     }
   }
-  
+
   handleToDo(e) {
     const target = e.target;
     const value = target.value;
@@ -36,20 +56,35 @@ class App extends Component {
       text: this.state.text,
       id: this.state.itemCounter++ 
     };
-    this.state.toDoList.push(newItem);
-    this.setState({toDoList: this.state.toDoList});
+    this.setState({toDoList: [...this.state.toDoList, newItem]}, () => {
+      document.getElementById('cool').value = "";
+    });
   }
 
   deleteItem(props) {
-    console.log(props);
+    const deletedItem = this.state.toDoList.find((toDo) => toDo.id === props.id);
+    const newList = this.state.toDoList.filter((del) => del.id != props.id);
+    this.setState({toDoList: newList}, () => {
+      alert(`You've deleted: ${deletedItem.text}`);
+    });
   }
 
   completeItem(props) {
-    console.log("completed:", props.completed);
+    this.setState(prevState => ({
+      toDoList: prevState.toDoList.map(
+        toDo => (toDo.id === props.id ? Object.assign(toDo, toDo.completed = !toDo.completed) : toDo)
+        )}
+      )
+    );
   }
 
   editItem(props) {
-    console.log("editEnabled:", props.editEnabled);
+    this.setState(prevState => ({
+      toDoList: prevState.toDoList.map(
+        toDo => (toDo.id === props.id ? Object.assign(toDo, toDo.editEnabled = !toDo.editEnabled) : toDo)
+        )}
+      )
+    );
   }
 
   test() {
@@ -60,7 +95,7 @@ class App extends Component {
     return (
       <div className='container mt-5'>
         <div className="row">
-          <div className="col">
+          <div className="col"> 
             <div className="jumbotron col-md-12">
               <h1 className="display-4">A Very Simple Todo App</h1>
               <p className="lead">Things I should be doing but not.</p>

@@ -1,5 +1,5 @@
 import React from 'react';
-import editItem from './editItem';
+import EditItem from './editItem';
 
 const toDoItem = (props) => (
     <div className="row">
@@ -16,7 +16,7 @@ const toDoItem = (props) => (
     {(props.priority == 1) ? "High" : (props.priority == 2) ? "Medium" : "Low"}
     </div>
     </div>
-    {props.editEnabled === true ? <editItem /> : <button onClick={() => {props.editItem(props)}} className="m-2 pr-3 pl-3 btn btn-warning">Edit</button>}
+    {props.editEnabled === true ? <EditItem /> : <button onClick={() => {props.editItem(props)}} className="m-2 pr-3 pl-3 btn btn-warning">Edit</button>}
     <button onClick={() => {props.deleteItem(props)}} className="m-2 pr-3 pl-3 btn btn-danger">Delete</button>
     <editItem/>
     </div>
