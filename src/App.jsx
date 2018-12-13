@@ -12,31 +12,33 @@ class App extends Component {
     this.editItem = this.editItem.bind(this);
     this.test = this.test.bind(this);
     this.state = {
-      toDoList: [  {
-        completed: false,
-        editEnabled: false,
-        priority: 1,
-        text: 'item one',
-        id: 1 
-      },
-      {
-        completed: false,
-        editEnabled: false,
-        priority: 2,
-        text: 'item two',
-        id: 2 
-      },
-      {
-        completed: false,
-        editEnabled: false,
-        priority: 3,
-        text: 'item three',
-        id: 3 
-      }],
+      toDoList: [],
       itemCounter: 1,
       priority: 1,
     }
   }
+
+  // toDoList: [  {
+  //   completed: false,
+  //   editEnabled: false,
+  //   priority: 1,
+  //   text: 'item one',
+  //   id: 1 
+  // },
+  // {
+  //   completed: false,
+  //   editEnabled: false,
+  //   priority: 2,
+  //   text: 'item two',
+  //   id: 2 
+  // },
+  // {
+  //   completed: false,
+  //   editEnabled: false,
+  //   priority: 3,
+  //   text: 'item three',
+  //   id: 3 
+  // }],
 
   handleToDo(e) {
     const target = e.target;
@@ -87,9 +89,15 @@ class App extends Component {
     );
   }
 
-  test() {
-    console.log(this.state.toDoList);
+  test(props) {
+    this.setState(prevState => ({
+      toDoList: prevState.toDoList.map(
+        toDo => (toDo.id === props.id ? Object.assign(toDo, toDo.text = this.state.text, toDo.editEnabled = !toDo.editEnabled, toDo.priority = this.state.priority, toDo.completed = false) : toDo)
+        )}  
+      )
+    );
   }
+
 
   render() {
     return (
@@ -99,7 +107,6 @@ class App extends Component {
             <div className="jumbotron col-md-12">
               <h1 className="display-4">A Very Simple Todo App</h1>
               <p className="lead">Things I should be doing but not.</p>
-              <button onClick={this.test}>See State</button>
             </div>
           </div>
         </div>
@@ -116,7 +123,7 @@ class App extends Component {
                 <h2>Welcome to this very simple todo app!</h2>
                 <p className="lead">Get started now by adding a new list item on the left.</p>
               </div>
-                <ToDoItemList toDoList={this.state.toDoList} completeItem={this.completeItem} deleteItem={this.deleteItem} editItem={this.editItem}/>
+                <ToDoItemList handleToDo={this.handleToDo} test={this.test} toDoList={this.state.toDoList} completeItem={this.completeItem} deleteItem={this.deleteItem} editItem={this.editItem}/>
             </div>
           </div>
         </div>
