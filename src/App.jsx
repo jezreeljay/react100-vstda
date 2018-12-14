@@ -18,28 +18,6 @@ class App extends Component {
     }
   }
 
-  // toDoList: [  {
-  //   completed: false,
-  //   editEnabled: false,
-  //   priority: 1,
-  //   text: 'item one',
-  //   id: 1 
-  // },
-  // {
-  //   completed: false,
-  //   editEnabled: false,
-  //   priority: 2,
-  //   text: 'item two',
-  //   id: 2 
-  // },
-  // {
-  //   completed: false,
-  //   editEnabled: false,
-  //   priority: 3,
-  //   text: 'item three',
-  //   id: 3 
-  // }],
-
   handleToDo(e) {
     const target = e.target;
     const value = target.value;
@@ -97,7 +75,6 @@ class App extends Component {
       )
     );
   }
-
 
   render() {
     return (

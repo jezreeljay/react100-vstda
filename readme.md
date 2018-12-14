@@ -2,6 +2,13 @@
 
 This very simplt Todo App demoes how props and state are passed between parent, child, and sibling components, with a UI designed to add and delete **toDoItem** objects to / from a **toDolist** array. 
 
+Deployment: [1.0](https://vstda-apgfoxckhu.now.sh/)
+
+## Current Bugs
+
+1. Default priority value doesn't reset after editing a to-do.
+2. Editing to-do text adds extra values to to-do object.
+
 ## Outline
 
 ```

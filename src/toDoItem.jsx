@@ -2,7 +2,7 @@ import React from 'react';
 import EditItem from './editItem';
 
 const toDoItem = (props) => (
-<li className="list-group-item container" className={(props.priority == 1) ? "list-group-item container alert-success success" : (props.priority == 2) ? "list-group-item container alert-warning" : "list-group-item container alert-danger"}>
+<li className="list-group-item container success">
     <div className="row">
         <div className="col">
             <div className="input-group">
@@ -11,7 +11,7 @@ const toDoItem = (props) => (
                     <input className="m-3" type="checkbox" onClick={() => {props.completeItem(props)}} aria-label="Checkbox for following text input"/>
                     </div>
                 </div>
-                <div type="text" className="border p-3" aria-label="Text input with checkbox">
+                <div type="text" className={(props.priority == 1) ? "border rounded-right p-3 container alert-success col" : (props.priority == 2) ? "border rounded-right p-3 container alert-warning col" : "border rounded-right p-3 container alert-danger col" } aria-label="Text input with checkbox">
                     {props.text}
                 </div>
                 {console.log(props, props.text)}
@@ -21,7 +21,7 @@ const toDoItem = (props) => (
         </div>
         
     </div>
-    {props.editEnabled === true ? <div className="row"><div className="col"><EditItem test={props.test} text={props.text} priority={props.priority} id={props.id} handleToDo={props.handleToDo}/></div></div> : null}
+    {props.editEnabled === true ? <div className="row"><div className="col  mt-3"><EditItem test={props.test} text={props.text} priority={props.priority} id={props.id} handleToDo={props.handleToDo}/></div></div> : null}
 </li>
 )
 
